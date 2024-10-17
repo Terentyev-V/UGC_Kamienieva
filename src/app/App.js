@@ -1,16 +1,15 @@
-
+import React from 'react';
 import Root from '../components/Root';
-import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Root />} />
-  )
-);
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<Root />} />
+        
+      </Routes>
+    </Router>
   );
 }
 
