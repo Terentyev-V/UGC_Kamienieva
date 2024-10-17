@@ -17,7 +17,7 @@ export default function Header () {
                         <h1>UGC Creator</h1>
                 </div>
                 <div className="headerNav">
-                <Link to="/section2">About Me</Link>
+                <Link to="#aboutMe">About Me</Link>
                     <a href="#gallery">Gallery</a>
                     <a href="#contacts">Contacts</a>
                 </div>
