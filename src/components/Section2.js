@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+
 import PhotoAbout from '../images/PhotoAbout.jpg';
 
 export default function Section2() {
