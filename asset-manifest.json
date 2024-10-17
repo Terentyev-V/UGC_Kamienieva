@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/UGC_Kamienieva/static/css/main.368856e6.css",
+    "main.js": "/UGC_Kamienieva/static/js/main.aa8dbd08.js",
+    "static/js/453.ef9f5337.chunk.js": "/UGC_Kamienieva/static/js/453.ef9f5337.chunk.js",
+    "static/media/Video1.mp4": "/UGC_Kamienieva/static/media/Video1.5b1f385610a34efa6f2c.mp4",
+    "static/media/Video2.mp4": "/UGC_Kamienieva/static/media/Video2.699809621fa475e9ad03.mp4",
+    "static/media/Video3.mp4": "/UGC_Kamienieva/static/media/Video3.893a2988ae0a91a35d44.mp4",
+    "static/media/Video4.mp4": "/UGC_Kamienieva/static/media/Video4.0a4fec0690782588148d.mp4",
+    "static/media/Video6.mp4": "/UGC_Kamienieva/static/media/Video6.9d09a589d76d6ed58b6c.mp4",
+    "static/media/Video5.mp4": "/UGC_Kamienieva/static/media/Video5.825a47b474340a89d4ef.mp4",
+    "static/media/Video.mp4": "/UGC_Kamienieva/static/media/Video.3fe505cd8e193e626548.mp4",
+    "static/media/PhotoAbout.jpg": "/UGC_Kamienieva/static/media/PhotoAbout.f3c2084b1caf4745276d.jpg",
+    "static/media/PhotoMain.jpg": "/UGC_Kamienieva/static/media/PhotoMain.44da61b674183e356e51.jpg",
+    "index.html": "/UGC_Kamienieva/index.html",
+    "main.368856e6.css.map": "/UGC_Kamienieva/static/css/main.368856e6.css.map",
+    "main.aa8dbd08.js.map": "/UGC_Kamienieva/static/js/main.aa8dbd08.js.map",
+    "453.ef9f5337.chunk.js.map": "/UGC_Kamienieva/static/js/453.ef9f5337.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.368856e6.css",
+    "static/js/main.aa8dbd08.js"
+  ]
+}
