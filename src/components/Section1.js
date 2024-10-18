@@ -1,31 +1,22 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import PhotoMain from '../images/PhotoMain.jpg'
-
-
+import PhotoMain from "../images/PhotoMain.jpg";
+import { Link } from "react-scroll";
 
 export default function Section1() {
-
-    // get the navigate function
-    const navigate = useNavigate()
-
-    const aboutMe = () => {
-      // imperatively redirect forward
-      navigate(aboutMe)
-    }
-  
-    return (
-      <section className="section1">
-        <div className="section1Left">
-          <h1> Hi, I am Tetiana,</h1>
-              <h2>making ugc content for your brand</h2>
-          <button className="section1Button" onClick={aboutMe}><a href="#aboutMe">Learn more about me</a></button>
-        </div>
-        <div className="section1Right">
-          <img className="photoMain" src={PhotoMain} alt="UGC Creator Kamienieva Tetiana"/>
-        </div>
-        
-        
-      </section>
-    );
-  }
+  return (
+    <section className="section1">
+      <div className="section1Left">
+        <h1> Hi, I am Tetiana,</h1>
+        <h2>making ugc content for your brand</h2>
+        <button className="section1Button">
+          <Link to="aboutMe" smooth={true} duration={500} offset={-70}>
+            Learn more about me
+          </Link>
+        </button>
+      </div>
+      <div className="section1Right">
+        <img className="photoMain" src={PhotoMain} alt="UGC Creator Kamienieva Tetiana" />
+      </div>
+    </section>
+  );
+}
