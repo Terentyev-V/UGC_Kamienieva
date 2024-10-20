@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react"; 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Video from '../videos/Video.mp4';
@@ -9,104 +9,101 @@ import Video4 from '../videos/Video4.mp4';
 import Video5 from '../videos/Video5.mp4';
 import Video6 from '../videos/Video6.mp4';
 
-
-const items = [
-    <div className="item video" key="1">
-      <video className="media">
-        <source src={Video} />
-        Your browser does not support the video tag.
-      </video>
-    </div>,
-    <div className="item video" key="2">
-      <video className="media">
-        <source src={Video1} />
-        Your browser does not support the video tag.
-      </video>
-    </div>,
-    <div className="item video" key="3">
-      <video className="media">
-        <source src={Video2} />
-        Your browser does not support the video tag.
-      </video>
-    </div>,
-    <div className="item video" key="4">
-    <video className="media">
-      <source src={Video3} />
-      Your browser does not support the video tag.
-    </video>
-    </div>,
-    <div className="item video" key="5">
-    <video className="media">
-      <source src={Video4} />
-      Your browser does not support the video tag.
-    </video>
-    </div>,
-    <div className="item video" key="6">
-    <video className="media">
-      <source src={Video5} />
-      Your browser does not support the video tag.
-    </video>
-    </div>,
-    <div className="item video" key="7">
-    <video className="media">
-      <source src={Video6} />
-      Your browser does not support the video tag.
-    </video>
-    </div>   
-  
+const videos = [
+  Video,
+  Video1,
+  Video2,
+  Video3,
+  Video4,
+  Video5,
+  Video6,
 ];
 
-export default function Section3() {
-    const [mainIndex, setMainIndex] = useState(0);
+const Section3 = () => {
+  const [mainIndex, setMainIndex] = useState(0);
+  const videoRefs = useRef([]);
 
-    // Video Playback: Pause/Play on Touch or Click
-    useEffect(() => {
-        const handleVideoPlayback = (event) => {
-            const video = event.currentTarget; // Get the video that triggered the event
-            video.paused ? video.play() : video.pause(); // Toggle play/pause
-        };
+  const handleSlideChange = (index) => {
+    // Stop all videos and mute them
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.pause();
+        video.muted = true; // Ensure all videos are muted initially
+      }
+    });
 
-        const videos = document.querySelectorAll(".media");
-        videos.forEach((video) => {
-            video.addEventListener("click", handleVideoPlayback);
-            video.addEventListener("touchstart", handleVideoPlayback); // For touch devices
-        });
+    // Start playing the current video with sound
+    if (videoRefs.current[index]) {
+      videoRefs.current[index].play();
+      videoRefs.current[index].muted = false; // Unmute the current video
+    }
+    setMainIndex(index);
+  };
 
-        // Cleanup event listeners on component unmount
-        return () => {
-            videos.forEach((video) => {
-                video.removeEventListener("click", handleVideoPlayback);
-                video.removeEventListener("touchstart", handleVideoPlayback);
-            });
-        };
-    }, []); // Empty dependency array ensures this runs once on mount
+  const slideNext = () => {
+    const newIndex = mainIndex < videos.length - 1 ? mainIndex + 1 : 0; // Loop back to the start
+    handleSlideChange(newIndex);
+  };
 
-    const slideNext = () => {
-        if (mainIndex < items.length - 1) {
-            setMainIndex(mainIndex + 1);
-        }
-    };
+  const slidePrev = () => {
+    const newIndex = mainIndex > 0 ? mainIndex - 1 : videos.length - 1; // Loop back to the end
+    handleSlideChange(newIndex);
+  };
 
-    const slidePrev = () => {
-        if (mainIndex > 0) {
-            setMainIndex(mainIndex - 1);
-        }
-    };
+  const handleVideoClick = (index) => {
+    const currentVideo = videoRefs.current[index];
 
-    return (
-        <div id="gallery" className="carousel section3">
-          
-            <AliceCarousel
-                activeIndex={mainIndex}
-                disableButtonsControls
-                items={items}
-            />
-            <div className="btn-prev" onClick={slidePrev}>
-                &lang;
-            </div>
-            <div className="btn-next" onClick={slideNext}>
-                &rang;
-            </div>
-        </div>
-    );
+    if (currentVideo) {
+      if (currentVideo.paused) {
+        // If the video is paused, play it
+        currentVideo.play();
+        currentVideo.muted = false; // Unmute the video when played
+      } else {
+        // If the video is playing, pause it
+        currentVideo.pause();
+        currentVideo.muted = true; // Mute the video when paused
+      }
+    }
+
+    // Ensure all other videos are paused and muted
+    videoRefs.current.forEach((video, i) => {
+      if (video && i !== index) {
+        video.pause();
+        video.muted = true; // Mute all other videos
+      }
+    });
+  };
+
+  const items = videos.map((videoSrc, index) => (
+    <div className="item video" key={index} onClick={() => handleVideoClick(index)}>
+      <video
+        className="media"
+        ref={(el) => (videoRefs.current[index] = el)} // Store the video reference
+        autoPlay={index === mainIndex} // Auto-play only the current video
+        muted // Start muted to prevent sound until needed
+        loop
+        playsInline
+        src={videoSrc}
+      />
+    </div>
+  ));
+
+  return (
+    <div id="gallery" className="carousel section3">
+      <AliceCarousel
+        activeIndex={mainIndex}
+        onSlideChanged={({ item }) => handleSlideChange(item)}
+        disableButtonsControls
+        items={items}
+      />
+      <div className="btn-prev" onClick={slidePrev}>
+        &lang;
+      </div>
+      <div className="btn-next" onClick={slideNext}>
+        &rang;
+      </div>
+    </div>
+  );
 }
+
+export default Section3;
