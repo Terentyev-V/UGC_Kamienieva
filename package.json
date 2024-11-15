@@ -2,7 +2,7 @@
   "name": "ugc_creator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://terentyev-v.github.io/UGC_Kamienieva",
+  /*"homepage": "https://terentyev-v.github.io/UGC_Kamienieva",*/
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
