@@ -89,6 +89,7 @@ body {
 .headerNav a {
   color: #17111D;
   text-decoration: none;
+  cursor: url('./images/cursor.svg'), auto;
 }
 
 .headerNav a:active {

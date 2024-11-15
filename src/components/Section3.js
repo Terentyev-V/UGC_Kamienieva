@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react"; 
+import React, { useState, useRef } from "react"; 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 import Video from '../videos/Video.mp4';
@@ -96,12 +96,7 @@ const Section3 = () => {
         disableButtonsControls
         items={items}
       />
-      <div className="btn-prev" onClick={slidePrev}>
-        &lang;
-      </div>
-      <div className="btn-next" onClick={slideNext}>
-        &rang;
-      </div>
+      
     </div>
   );
 }
