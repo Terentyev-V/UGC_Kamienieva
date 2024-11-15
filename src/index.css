@@ -234,6 +234,12 @@ body {
   
 }
 
+.alice-carousel__dots-item:not(.__custom):hover,
+.alice-carousel__dots-item:not(.__custom).__active {
+  background-color: #67b1c6 !important;
+}
+
+
 
 .caption-container {
   position: absolute;
@@ -241,23 +247,6 @@ body {
   left: 20rem;
   right: 20rem;
   
-}
-
-
-.btn-prev,
-.btn-next {
-  position: absolute;
-  font-size: 50px;
-  font-style: normal;
-  color: #67b1c6;
-  cursor: pointer;
-  top: 21rem;
-}
-.btn-prev {
-  left: 0.05rem;
-}
-.btn-next {
-  right: 0.05rem;
 }
 
 

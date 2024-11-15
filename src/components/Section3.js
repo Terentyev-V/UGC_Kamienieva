@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react"; 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
+import "../index.css";
 import Video from '../videos/Video.mp4';
 import Video1 from '../videos/Video1.mp4';
 import Video2 from '../videos/Video2.mp4';
@@ -38,16 +39,6 @@ const Section3 = () => {
       videoRefs.current[index].muted = false; // Unmute the current video
     }
     setMainIndex(index);
-  };
-
-  const slideNext = () => {
-    const newIndex = mainIndex < videos.length - 1 ? mainIndex + 1 : 0; // Loop back to the start
-    handleSlideChange(newIndex);
-  };
-
-  const slidePrev = () => {
-    const newIndex = mainIndex > 0 ? mainIndex - 1 : videos.length - 1; // Loop back to the end
-    handleSlideChange(newIndex);
   };
 
   const handleVideoClick = (index) => {
@@ -93,6 +84,7 @@ const Section3 = () => {
       <AliceCarousel
         activeIndex={mainIndex}
         onSlideChanged={({ item }) => handleSlideChange(item)}
+        
         disableButtonsControls
         items={items}
       />
