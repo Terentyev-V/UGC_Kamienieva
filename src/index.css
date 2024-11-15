@@ -189,6 +189,20 @@ body {
   animation-duration: 0.65s;
 }
 
+.multiline-truncated-text {
+  display: -webkit-box;
+-webkit-line-clamp: 6;
+line-clamp: 6;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+cursor: pointer;
+}
+
+.full-text {
+  display: block;
+} 
+
 .section2Right {
   width: 40dvw;
   margin: auto;
@@ -205,7 +219,7 @@ body {
 .section3 {
   display: flex;
   width: 70dvw;
-  margin: auto;
+  margin: 10px auto auto;
   column-gap: 1dvw;
   justify-items: center;
   align-items: center;
@@ -216,7 +230,7 @@ body {
   transition-duration: 0.65s;
   transition-delay: 0.444444s;
   animation-duration: 0.65s;
-  padding-top: 80px;
+  padding-top: 12px;
 }
 
 
@@ -239,17 +253,16 @@ body {
   background-color: #67b1c6 !important;
 }
 
-
+.alice-carousel__dots {
+  margin: 10px 3px 5px !important;
+}
 
 .caption-container {
   position: absolute;
   bottom: 0;
   left: 20rem;
   right: 20rem;
-  
 }
-
-
 
 .section4 {
   display: flex;
@@ -330,8 +343,6 @@ body {
     font-size: 22px;
   }
 
-
-
   .section1Right {
     width: 60dvw;
     padding-top: 30px;
@@ -349,34 +360,48 @@ body {
   .section2 {
     display: grid;
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: repeat(2, 0.4fr);
+    grid-template-rows: 0.3fr 0.4fr ;
     grid-column-gap: 0px;
     grid-row-gap: 0px;
   }
 
   .section2Left {
-    width: 70dvw;
-    margin: auto;
     grid-area: 2 / 2 / 3 / 3;
     align-self: start;
     text-align: center;
-
+    overflow: hidden; /* Ensure no content overflows */
+    transition: height 0.3s ease-in-out;
+    padding: 20px 0px; 
   }
 
   .section2Left h1 {
-    font-size: 22px;
+    font-size: 30px;
     margin: 10px 0px 10px 0px;
     
   }
 
   .section2Left h2 {
-    font-size: 13px;
+    font-size: 18px;
     font-weight: 400;
-    margin: 0px;
+    margin: 0px; 
   }
 
+  .full-text {
+    display: block; /* Show full text */
+    overflow: visible; /* Ensure all text is visible */
+  }
+
+  .multiline-truncated-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+   
+
   .section2Right {
-    width: 60dvw;
+    width: 50dvw;
     padding-top: 30px;
     margin: auto;
     grid-area: 1 / 2 / 2 / 3;
@@ -389,33 +414,19 @@ body {
     
   }
 
-  
-
   .carousel {
     width: 70svw;
     justify-content: center;
-    
   }
+
   .media {
-    width: 100%; /* Ensure the video fills the screen width on mobile */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%; 
+    height: auto; 
 }
 
-/* Optional: Adjust the size of the carousel navigation buttons */
-.btn-prev, .btn-next {
-    font-size: 24px; /* Reduce button size for mobile */
-    top: 50%; /* Center vertically */
-}
-
-/* Adjust carousel item styles for smaller screens */
 .item.video {
-    padding: 10px; /* Add some padding if necessary for mobile */
+    padding: 10px;
 }
-
-
-
-
-
 
   .section4 {
     height: 70vh;
